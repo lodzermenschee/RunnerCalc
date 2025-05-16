@@ -1,41 +1,41 @@
-{
-  "speedCalc": {
-    "mode": {
-      "pace": "Oblicz tempo",
-      "time": "Oblicz czas"
-    },
-    "distanceLabel": "Dystans (km):",
-    "presets": {
-      "5": "5 km",
-      "10": "10 km",
-      "halfMarathon": "21.0975 km",
-      "marathon": "42.195 km"
-    },
-    "customDistanceLabel": "Wpisz własny dystans",
-    "placeholders": {
-      "distance": "np. 5.0",
-      "hours": "g",
-      "minutes": "min",
-      "seconds": "sek"
-    },
-    "finishTimeLabel": "Czas ukończenia:",
-    "paceLabel": "Tempo (min/km):",
-    "buttons": {
-      "calculatePace": "Oblicz tempo",
-      "calculateTime": "Oblicz czas"
-    },
-    "errors": {
-      "invalidDistance": "Podaj prawidłowy dystans",
-      "invalidMinSec": "Minuty i sekundy muszą być od 0 do 59",
-      "nonZeroTime": "Podaj czas większy niż 0",
-      "paceFormat": "Tempo: minuty ≥ 0, sekundy 0–59",
-      "nonZeroPace": "Podaj tempo większe niż 0"
-    },
-    "results": {
-      "pace": "Tempo: {{paceMin}}:{{paceSec}} min/km",
-      "time": "Czas: {{hours}}:{{minutes}}:{{seconds}}"
-    }
+  {"speedCalc": {
+  "mode": {
+    "pace": "Oblicz tempo",
+    "time": "Oblicz czas"
   },
+  "distanceLabel": "Dystans (km):",
+  "presets": {
+    "5": "5 km",
+    "10": "10 km",
+    "halfMarathon": "Półmaraton",
+    "marathon": "Maraton"
+  },
+  "customDistanceLabel": "Wpisz własny dystans",
+  "placeholders": {
+    "distance": "np. 5.0",
+    "hours": "g",
+    "minutes": "min",
+    "seconds": "sek"
+  },
+  "finishTimeLabel": "Czas ukończenia:",
+  "paceLabel": "Tempo (min/km):",
+  "buttons": {
+    "calculatePace": "Oblicz tempo",
+    "calculateTime": "Oblicz czas"
+  },
+  "errors": {
+    "invalidDistance": "Podaj prawidłowy dystans",
+    "invalidMinSec": "Minuty i sekundy muszą być od 0 do 59",
+    "nonZeroTime": "Podaj czas większy niż 0",
+    "paceFormat": "Tempo: minuty ≥ 0, sekundy 0–59",
+    "nonZeroPace": "Podaj tempo większe niż 0"
+  },
+  "results": {
+    "pace": "Tempo: {{paceMin}}:{{paceSec}} min/km",
+    "time": "Czas: {{hours}}:{{minutes}}:{{seconds}}"
+  }
+},
+
   "trainingCalc": {
     "title": "Kalkulator treningów",
     "description": "Ten kalkulator wylicza strefy tempowe (Easy, Marathon, Threshold, Interval, Repetition, Fast Reps) jako procenty VO₂max (np. Easy ≈ 59–74% VO₂max) i tętna (65–79% HRmax) – dokładnie według tabel i wytycznych zawartych w książce Daniels’ Running Formula.",

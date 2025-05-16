@@ -15,7 +15,7 @@ export default function IntroScreen() {
     const fadeTimeout = setTimeout(() => {
       Animated.timing(opacity, {
         toValue: 1,
-        duration: 3000,
+        duration: 1000,
         useNativeDriver: true,
       }).start();
     }, 3000);
@@ -24,7 +24,7 @@ export default function IntroScreen() {
     const navTimeout = setTimeout(() => {
       // Po intro przejście do wyboru języka
       navigation.replace('LanguageSelect');
-    }, 8000);
+    }, 3000);
 
     return () => {
       clearTimeout(fadeTimeout);

@@ -1,41 +1,41 @@
 {
   "speedCalc": {
-    "mode": {
-      "pace": "Calculate pace",
-      "time": "Calculate time"
-    },
-    "distanceLabel": "Distance (km):",
-    "presets": {
-      "5": "5 km",
-      "10": "10 km",
-      "halfMarathon": "21.0975 km",
-      "marathon": "42.195 km"
-    },
-    "customDistanceLabel": "Enter your own distance",
-    "placeholders": {
-      "distance": "e.g. 5.0",
-      "hours": "h",
-      "minutes": "min",
-      "seconds": "sec"
-    },
-    "finishTimeLabel": "Finish time:",
-    "paceLabel": "Pace (min/km):",
-    "buttons": {
-      "calculatePace": "Calculate pace",
-      "calculateTime": "Calculate time"
-    },
-    "errors": {
-      "invalidDistance": "Please enter a valid distance",
-      "invalidMinSec": "Minutes and seconds must be between 0 and 59",
-      "nonZeroTime": "Please enter a time greater than 0",
-      "paceFormat": "Pace: minutes ≥ 0, seconds 0–59",
-      "nonZeroPace": "Please enter a pace greater than 0"
-    },
-    "results": {
-      "pace": "Pace: {{paceMin}}:{{paceSec}} min/km",
-      "time": "Time: {{hours}}:{{minutes}}:{{seconds}}"
-    }
+  "mode": {
+    "pace": "Calculate pace",
+    "time": "Calculate time"
   },
+  "distanceLabel": "Distance (km):",
+  "presets": {
+    "5": "5 km",
+    "10": "10 km",
+    "halfMarathon": "Half marathon",
+    "marathon": "Marathon"
+  },
+  "customDistanceLabel": "Enter your own distance",
+  "placeholders": {
+    "distance": "e.g. 5.0",
+    "hours": "h",
+    "minutes": "min",
+    "seconds": "sec"
+  },
+  "finishTimeLabel": "Finish time:",
+  "paceLabel": "Pace (min/km):",
+  "buttons": {
+    "calculatePace": "Calculate pace",
+    "calculateTime": "Calculate time"
+  },
+  "errors": {
+    "invalidDistance": "Enter a valid distance",
+    "invalidMinSec": "Minutes and seconds must be from 0 to 59",
+    "nonZeroTime": "Time must be greater than 0",
+    "paceFormat": "Pace: minutes ≥ 0, seconds 0–59",
+    "nonZeroPace": "Pace must be greater than 0"
+  },
+  "results": {
+    "pace": "Pace: {{paceMin}}:{{paceSec}} min/km",
+    "time": "Time: {{hours}}:{{minutes}}:{{seconds}}"
+  }
+},
   "trainingCalc": {
     "title": "Training Calculator",
     "description": "This calculator calculates training pace zones (Easy, Marathon, Threshold, Interval, Repetition, Fast Reps) as percentages of VO₂max (e.g., Easy ≈ 59–74% VO₂max) and heart rate (65–79% HRmax) – based on tables and guidelines from Daniels’ Running Formula.",

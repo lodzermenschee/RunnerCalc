@@ -1,30 +1,28 @@
-import { useTheme } from '@react-navigation/native';
+import { useTheme, useNavigation } from '@react-navigation/native';
 import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Dimensions,
   Pressable,
 } from 'react-native';
 import NumericInput from '../components/NumericInput';
 import { useFonts, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
 import { AnimatePresence, MotiView } from 'moti';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const DISTANCE_PRESETS = ['5', '10', '21.0975', '42.195'];
 const pastelBlue = '#B8D8FF';
 const labelGray = '#888';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
-
 export default function SpeedCalcScreen() {
-  const { colors } = useTheme();
+  const navigation = useNavigation();
+  const { colors, dark } = useTheme();
   const { t } = useTranslation();
   let [fontsLoaded] = useFonts({ Montserrat_700Bold });
 
@@ -37,7 +35,8 @@ export default function SpeedCalcScreen() {
   const [paceSec, setPaceSec] = useState('');
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
-  const [editMode, setEditMode] = useState('none'); // 'none' | 'distance' | 'time'
+  const [editMode, setEditMode] = useState('none');
+  const [activeTimeField, setActiveTimeField] = useState('hours'); // Nowe!
 
   const inputRefs = {
     distance: useRef(null),
@@ -123,17 +122,37 @@ export default function SpeedCalcScreen() {
     setResult(null);
   };
 
+  // KLUCZOWE: nowy onFocus dla każdego inputa!
+  const handleTimeFieldFocus = (field) => {
+    setActiveTimeField(field);
+    setEditMode('time');
+  };
+
   return (
     <KeyboardAvoidingView
       style={[styles.flex, { backgroundColor: colors.background }]}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 80}
     >
-      <ScrollView
-        contentContainerStyle={styles.container}
-        keyboardShouldPersistTaps="handled"
-      >
-        {/* Przełącznik trybu */}
+      {/* CUSTOM HEADER */}
+      <View style={styles.customHeader}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <MaterialCommunityIcons
+            name="arrow-left-circle"
+            size={34}
+            color={dark ? '#fff' : '#333'}
+          />
+        </TouchableOpacity>
+        <Text style={[
+          styles.headerTitle,
+          { color: dark ? '#fff' : '#222' }
+        ]}>
+          {t('home.paceCalculator')}
+        </Text>
+      </View>
+
+      <View style={styles.container}>
+        {/* Tryb (Pace/Time) */}
         <View style={styles.modeSwitch}>
           {['pace', 'time'].map((m) => (
             <TouchableOpacity
@@ -149,7 +168,7 @@ export default function SpeedCalcScreen() {
             >
               <Text
                 style={{
-                  color: mode === m ? '#222' : colors.text,
+                  color: mode === m ? '#222' : dark ? '#fff' : colors.text,
                   fontFamily: 'Montserrat_700Bold',
                   fontSize: 16,
                 }}
@@ -160,7 +179,6 @@ export default function SpeedCalcScreen() {
           ))}
         </View>
 
-        {/* ODSTĘP między przełącznikami a presetami */}
         <View style={{ height: 32 }} />
 
         {/* Presety */}
@@ -186,7 +204,7 @@ export default function SpeedCalcScreen() {
               >
                 <Text
                   style={{
-                    color: distance === d ? '#222' : colors.text,
+                    color: distance === d ? '#222' : dark ? '#fff' : colors.text,
                     fontFamily: 'Montserrat_700Bold',
                     fontSize: 16,
                   }}
@@ -198,13 +216,12 @@ export default function SpeedCalcScreen() {
           })}
         </View>
 
-        {/* DUŻY ODSTĘP MIĘDZY PRESETAMI A POLEM DYSTANSU */}
         <View style={{ height: 40 }} />
 
         {/* Własny dystans */}
         <Text
           style={{
-            color: '#000',
+            color: dark ? '#fff' : '#000',
             textAlign: 'center',
             marginTop: 0,
             marginBottom: 6,
@@ -219,41 +236,40 @@ export default function SpeedCalcScreen() {
             ref={inputRefs.distance}
             value={distance}
             onChangeText={setDistance}
-            placeholder={t('speedCalc.placeholders.distance')}
-            style={styles.input}
+            placeholder=""
+            style={[styles.input, { color: '#222' }]}
             keyboardType="decimal-pad"
             onFocus={() => setEditMode('distance')}
           />
           <Text style={styles.inputUnit}>km</Text>
         </View>
 
-        {/* DUŻY ODSTĘP MIĘDZY POLEM DYSTANSU A CZASEM */}
         <View style={{ height: 32 }} />
 
         {/* NAPIS NAD POLAMI DO CZASU LUB TEMPA */}
         {mode === 'pace' ? (
           <Text
             style={{
-              color: '#000',
+              color: dark ? '#fff' : '#000',
               textAlign: 'center',
               fontFamily: 'Montserrat_700Bold',
               fontSize: 15,
               marginBottom: 6,
             }}
           >
-            Czas ukończenia
+            {t('speedCalc.finishTimeLabel')}
           </Text>
         ) : (
           <Text
             style={{
-              color: '#000',
+              color: dark ? '#fff' : '#000',
               textAlign: 'center',
               fontFamily: 'Montserrat_700Bold',
               fontSize: 15,
               marginBottom: 6,
             }}
           >
-            Tempo (min./km)
+            {t('speedCalc.paceLabel')}
           </Text>
         )}
 
@@ -266,9 +282,9 @@ export default function SpeedCalcScreen() {
                 value={hours}
                 onChangeText={setHours}
                 placeholder=""
-                style={styles.timeBoxBig}
+                style={[styles.timeBoxBig, { color: '#222' }]}
                 keyboardType="numeric"
-                onFocus={() => setEditMode('time')}
+                onFocus={() => handleTimeFieldFocus('hours')}
               />
               <Text style={styles.timeLabel}>h</Text>
             </View>
@@ -278,9 +294,9 @@ export default function SpeedCalcScreen() {
                 value={minutes}
                 onChangeText={setMinutes}
                 placeholder=""
-                style={styles.timeBoxBig}
+                style={[styles.timeBoxBig, { color: '#222' }]}
                 keyboardType="numeric"
-                onFocus={() => setEditMode('time')}
+                onFocus={() => handleTimeFieldFocus('minutes')}
               />
               <Text style={styles.timeLabel}>min</Text>
             </View>
@@ -290,9 +306,9 @@ export default function SpeedCalcScreen() {
                 value={seconds}
                 onChangeText={setSeconds}
                 placeholder=""
-                style={styles.timeBoxBig}
+                style={[styles.timeBoxBig, { color: '#222' }]}
                 keyboardType="numeric"
-                onFocus={() => setEditMode('time')}
+                onFocus={() => handleTimeFieldFocus('seconds')}
               />
               <Text style={styles.timeLabel}>s</Text>
             </View>
@@ -305,9 +321,9 @@ export default function SpeedCalcScreen() {
                 value={paceMin}
                 onChangeText={setPaceMin}
                 placeholder=""
-                style={styles.timeBoxBig}
+                style={[styles.timeBoxBig, { color: '#222' }]}
                 keyboardType="numeric"
-                onFocus={() => setEditMode('time')}
+                onFocus={() => handleTimeFieldFocus('paceMin')}
               />
               <Text style={styles.timeLabel}>min</Text>
             </View>
@@ -317,9 +333,9 @@ export default function SpeedCalcScreen() {
                 value={paceSec}
                 onChangeText={setPaceSec}
                 placeholder=""
-                style={styles.timeBoxBig}
+                style={[styles.timeBoxBig, { color: '#222' }]}
                 keyboardType="numeric"
-                onFocus={() => setEditMode('time')}
+                onFocus={() => handleTimeFieldFocus('paceSec')}
               />
               <Text style={styles.timeLabel}>s</Text>
             </View>
@@ -377,9 +393,9 @@ export default function SpeedCalcScreen() {
             )}
           </View>
         )}
-      </ScrollView>
+      </View>
 
-      {/* MODAL TRYBU EDYCJI – DYSTANS */}
+      {/* MODALE */}
       <AnimatePresence>
         {editMode === 'distance' && (
           <MotiView
@@ -397,14 +413,14 @@ export default function SpeedCalcScreen() {
               transition={{ type: 'timing', duration: 300 }}
               style={styles.modalCard}
             >
-              <Text style={styles.editLabel}>Wpisz własny dystans</Text>
+              <Text style={styles.editLabel}>{t('speedCalc.customDistanceLabel')}</Text>
               <View style={styles.inputRowModal}>
                 <NumericInput
                   ref={inputRefs.distance}
                   value={distance}
                   onChangeText={setDistance}
-                  placeholder={t('speedCalc.placeholders.distance')}
-                  style={styles.inputModal}
+                  placeholder=""
+                  style={[styles.inputModal, { color: '#222' }]}
                   keyboardType="decimal-pad"
                   autoFocus
                 />
@@ -440,8 +456,10 @@ export default function SpeedCalcScreen() {
               transition={{ type: 'timing', duration: 300 }}
               style={styles.modalCardWide}
             >
-              <Text style={[styles.editLabel, { textAlign: 'center', alignSelf: 'center' }]}>
-                {mode === 'pace' ? 'Czas ukończenia' : 'Tempo (min./km)'}
+              <Text style={[styles.editLabel, { textAlign: 'center', alignSelf: 'center', color: dark ? '#fff' : '#000' }]}>
+                {mode === 'pace'
+                  ? t('speedCalc.finishTimeLabel')
+                  : t('speedCalc.paceLabel')}
               </Text>
               <View style={styles.inputRowModalFinal}>
                 {mode === 'pace' ? (
@@ -452,9 +470,9 @@ export default function SpeedCalcScreen() {
                         value={hours}
                         onChangeText={setHours}
                         placeholder=""
-                        style={styles.inputModalFinal}
+                        style={[styles.inputModalFinal, { color: '#222' }]}
                         keyboardType="numeric"
-                        autoFocus
+                        autoFocus={activeTimeField === 'hours'}
                       />
                       <Text style={styles.timeLabelModalFinal}>h</Text>
                     </View>
@@ -464,8 +482,9 @@ export default function SpeedCalcScreen() {
                         value={minutes}
                         onChangeText={setMinutes}
                         placeholder=""
-                        style={styles.inputModalFinal}
+                        style={[styles.inputModalFinal, { color: '#222' }]}
                         keyboardType="numeric"
+                        autoFocus={activeTimeField === 'minutes'}
                       />
                       <Text style={styles.timeLabelModalFinal}>min</Text>
                     </View>
@@ -475,8 +494,9 @@ export default function SpeedCalcScreen() {
                         value={seconds}
                         onChangeText={setSeconds}
                         placeholder=""
-                        style={styles.inputModalFinal}
+                        style={[styles.inputModalFinal, { color: '#222' }]}
                         keyboardType="numeric"
+                        autoFocus={activeTimeField === 'seconds'}
                       />
                       <Text style={styles.timeLabelModalFinal}>s</Text>
                     </View>
@@ -489,9 +509,9 @@ export default function SpeedCalcScreen() {
                         value={paceMin}
                         onChangeText={setPaceMin}
                         placeholder=""
-                        style={styles.inputModalFinal}
+                        style={[styles.inputModalFinal, { color: '#222' }]}
                         keyboardType="numeric"
-                        autoFocus
+                        autoFocus={activeTimeField === 'paceMin'}
                       />
                       <Text style={styles.timeLabelModalFinal}>min</Text>
                     </View>
@@ -501,8 +521,9 @@ export default function SpeedCalcScreen() {
                         value={paceSec}
                         onChangeText={setPaceSec}
                         placeholder=""
-                        style={styles.inputModalFinal}
+                        style={[styles.inputModalFinal, { color: '#222' }]}
                         keyboardType="numeric"
+                        autoFocus={activeTimeField === 'paceSec'}
                       />
                       <Text style={styles.timeLabelModalFinal}>s</Text>
                     </View>
@@ -516,9 +537,7 @@ export default function SpeedCalcScreen() {
                   setEditMode('none');
                 }}
               >
-                <Text style={styles.okButtonText}>
-                  {mode === 'pace' ? 'Oblicz tempo' : 'Oblicz czas'}
-                </Text>
+                <Text style={styles.okButtonText}>OK</Text>
               </TouchableOpacity>
             </MotiView>
           </MotiView>
@@ -530,7 +549,23 @@ export default function SpeedCalcScreen() {
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
-  container: { padding: 16 },
+  customHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 50,
+    marginBottom: 18,
+    marginLeft: 4,
+  },
+  headerTitle: {
+    fontFamily: 'Montserrat_700Bold',
+    fontSize: 25,
+    marginLeft: 18,
+    letterSpacing: 1.2,
+  },
+  container: {
+    padding: 16,
+    paddingBottom: 36,
+  },
   modeSwitch: { flexDirection: 'row', marginBottom: 20 },
   modeButton: {
     flex: 1,
@@ -636,7 +671,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 24,
     padding: 28,
-    width: SCREEN_WIDTH * 0.82,
+    width: '82%',
     shadowColor: '#000',
     shadowOpacity: 0.12,
     shadowRadius: 16,
@@ -647,7 +682,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 24,
     padding: 28,
-    width: SCREEN_WIDTH * 0.93,
+    width: '93%',
     shadowColor: '#000',
     shadowOpacity: 0.12,
     shadowRadius: 16,
@@ -679,7 +714,6 @@ const styles = StyleSheet.create({
     marginRight: 8,
     textAlign: 'center',
   },
-  // OSTATECZNY styl do idealnych odstępów i szerokości
   inputRowModalFinal: {
     flexDirection: 'row',
     alignItems: 'flex-end',

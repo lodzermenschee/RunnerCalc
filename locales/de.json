@@ -8,42 +8,42 @@
     "darkMode": "Dunkelmodus"
   },
   "speedCalc": {
-    "mode": {
-      "pace": "Tempo berechnen",
-      "time": "Zeit berechnen"
-    },
-    "distanceLabel": "Distanz (km):",
-    "presets": {
-      "5": "5 km",
-      "10": "10 km",
-      "halfMarathon": "21,0975 km",
-      "marathon": "42,195 km"
-    },
-    "customDistanceLabel": "Eigene Distanz eingeben",
-    "placeholders": {
-      "distance": "z. B. 5,0",
-      "hours": "Std",
-      "minutes": "Min",
-      "seconds": "Sek"
-    },
-    "finishTimeLabel": "Zielzeit:",
-    "paceLabel": "Tempo (min/km):",
-    "buttons": {
-      "calculatePace": "Tempo berechnen",
-      "calculateTime": "Zeit berechnen"
-    },
-    "errors": {
-      "invalidDistance": "Gib eine gültige Distanz ein",
-      "invalidMinSec": "Minuten und Sekunden müssen 0–59 sein",
-      "nonZeroTime": "Gib eine Zeit größer als 0 ein",
-      "paceFormat": "Tempo: min ≥ 0, sek 0–59",
-      "nonZeroPace": "Gib ein Tempo größer als 0 ein"
-    },
-    "results": {
-      "pace": "Tempo: {{paceMin}}:{{paceSec}} min/km",
-      "time": "Zeit: {{hours}}:{{minutes}}:{{seconds}}"
-    }
+  "mode": {
+    "pace": "Tempo berechnen",
+    "time": "Zeit berechnen"
   },
+  "distanceLabel": "Distanz (km):",
+  "presets": {
+    "5": "5 km",
+    "10": "10 km",
+    "halfMarathon": "Halbmarathon",
+    "marathon": "Marathon"
+  },
+  "customDistanceLabel": "Eigene Distanz eingeben",
+  "placeholders": {
+    "distance": "z.B. 5.0",
+    "hours": "Std",
+    "minutes": "Min",
+    "seconds": "Sek"
+  },
+  "finishTimeLabel": "Zielzeit:",
+  "paceLabel": "Tempo (Min/km):",
+  "buttons": {
+    "calculatePace": "Tempo berechnen",
+    "calculateTime": "Zeit berechnen"
+  },
+  "errors": {
+    "invalidDistance": "Gültige Distanz eingeben",
+    "invalidMinSec": "Minuten und Sekunden: 0 bis 59",
+    "nonZeroTime": "Zeit muss größer als 0 sein",
+    "paceFormat": "Tempo: Minuten ≥ 0, Sekunden 0–59",
+    "nonZeroPace": "Tempo muss größer als 0 sein"
+  },
+  "results": {
+    "pace": "Tempo: {{paceMin}}:{{paceSec}} min/km",
+    "time": "Zeit: {{hours}}:{{minutes}}:{{seconds}}"
+  }
+},
   "trainingCalc": {
     "title": "Trainingsrechner",
     "description": "Dieser Rechner berechnet Tempobereiche (Easy, Marathon, Threshold, Interval, Repetition, Fast Reps) als Prozentsätze von VO₂max (z. B. Easy ≈ 59–74 % VO₂max) und Herzfrequenz (65–79 % HFmax) – nach Tabellen und Vorgaben aus dem Buch Daniels’ Running Formula.",

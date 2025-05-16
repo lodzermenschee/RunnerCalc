@@ -95,18 +95,19 @@ export default function App() {
             name="SpeedCalc"
             component={SpeedCalcScreen}
             options={{
+              headerShown: false,
               title: t('home.paceCalculator'),
               headerTitleStyle,
             }}
           />
-          <Stack.Screen
-            name="TrainingCalc"
-            component={TrainingCalcScreen}
-            options={{
-              title: t('home.trainingCalculator'),
-              headerTitleStyle,
-            }}
-          />
+       <Stack.Screen
+  name="TrainingCalc"
+  component={TrainingCalcScreen}
+  options={{
+    headerShown: false, // ← to jest najważniejsze!
+  }}
+/>
+
           <Stack.Screen
             name="EquivalentCalc"
             component={EquivalentCalcScreen}
