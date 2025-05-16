@@ -1,0 +1,177 @@
+{
+  "speedCalc": {
+    "mode": {
+      "pace": "Calculate pace",
+      "time": "Calculate time"
+    },
+    "distanceLabel": "Distance (km):",
+    "presets": {
+      "5": "5 km",
+      "10": "10 km",
+      "halfMarathon": "21.0975 km",
+      "marathon": "42.195 km"
+    },
+    "customDistanceLabel": "Enter your own distance",
+    "placeholders": {
+      "distance": "e.g. 5.0",
+      "hours": "h",
+      "minutes": "min",
+      "seconds": "sec"
+    },
+    "finishTimeLabel": "Finish time:",
+    "paceLabel": "Pace (min/km):",
+    "buttons": {
+      "calculatePace": "Calculate pace",
+      "calculateTime": "Calculate time"
+    },
+    "errors": {
+      "invalidDistance": "Please enter a valid distance",
+      "invalidMinSec": "Minutes and seconds must be between 0 and 59",
+      "nonZeroTime": "Please enter a time greater than 0",
+      "paceFormat": "Pace: minutes ≥ 0, seconds 0–59",
+      "nonZeroPace": "Please enter a pace greater than 0"
+    },
+    "results": {
+      "pace": "Pace: {{paceMin}}:{{paceSec}} min/km",
+      "time": "Time: {{hours}}:{{minutes}}:{{seconds}}"
+    }
+  },
+  "trainingCalc": {
+    "title": "Training Calculator",
+    "description": "This calculator calculates training pace zones (Easy, Marathon, Threshold, Interval, Repetition, Fast Reps) as percentages of VO₂max (e.g., Easy ≈ 59–74% VO₂max) and heart rate (65–79% HRmax) – based on tables and guidelines from Daniels’ Running Formula.",
+    "distanceLabel": "Distance (km):",
+    "presets": {
+      "5": "5 km",
+      "10": "10 km",
+      "halfMarathon": "21.0975 km",
+      "marathon": "42.195 km"
+    },
+    "placeholders": {
+      "hours": "h",
+      "minutes": "min",
+      "seconds": "sec"
+    },
+    "finishTimeLabel": "Finish time:",
+    "buttons": {
+      "calculateTraining": "Calculate training paces"
+    },
+    "errors": {
+      "invalidInput": "Please enter a valid distance and a time greater than 0"
+    },
+    "factors": {
+      "Easy": {
+        "title": "Easy pace",
+        "description": "Easy: easy, recovery runs – help rebuild strength."
+      },
+      "Marathon": {
+        "title": "Marathon pace",
+        "description": "Marathon: pace close to your goal marathon pace on race day."
+      },
+      "Threshold": {
+        "title": "Threshold pace",
+        "description": "Threshold: sustainable hard effort, around lactate threshold."
+      },
+      "Interval": {
+        "title": "Interval pace",
+        "description": "Interval: VO₂max intervals – short, intense repeats."
+      },
+      "Repetition": {
+        "title": "Repetition pace",
+        "description": "Repetition: speed repetitions – very fast short efforts."
+      }
+    }
+  },
+  "home": {
+    "selectCalculator": "Select Calculator",
+    "paceCalculator": "Pace Calculator",
+    "trainingCalculator": "Training Calculator",
+    "equivalentCalculator": "Equivalent Calculator",
+    "wmaAgeGrading": "WMA Age-Grading",
+    "darkMode": "Dark Mode"
+  },
+  "equivalentCalc": {
+    "title": "Equivalent Calculator",
+    "description": "The calculator first converts your time to a VDOT value according to Dr. Daniels' formulas, then uses that value to predict equivalent times for other distances, based on the tables and formulas from Daniels’ Running Formula.",
+    "selectRaceLabel": "Select race distance:",
+    "presets": {
+      "5": "5 km",
+      "10": "10 km",
+      "halfMarathon": "Half marathon",
+      "marathon": "Marathon"
+    },
+    "finishTimeLabel": "Finish time:",
+    "placeholders": {
+      "hours": "h",
+      "minutes": "min",
+      "seconds": "sec"
+    },
+    "buttons": {
+      "calculate": "Calculate equivalents"
+    },
+    "errors": {
+      "invalidInput": "Please enter valid data"
+    },
+    "table": {
+      "race": "Race",
+      "time": "Time",
+      "pace": "Pace"
+    },
+    "targets": {
+      "5": "5 km",
+      "10": "10 km",
+      "halfMarathon": "Half marathon",
+      "marathon": "Marathon",
+      "3": "3 km",
+      "1_5": "1.5 km"
+    }
+  },
+  "wmaFactor": {
+    "title": "WMA Factor Calculator",
+    "description": "WMA Factor calculates your 'age-grading' coefficient based on World Masters Athletics tables and compares your time to world records for your gender and age group.",
+    "selectDistance": "Select distance:",
+    "presets": {
+      "5": "5 km",
+      "10": "10 km",
+      "halfMarathon": "Half marathon",
+      "marathon": "Marathon"
+    },
+    "ageLabel": "Age:",
+    "genderLabel": "Gender:",
+    "genderOptions": {
+      "female": "Female",
+      "male": "Male"
+    },
+    "placeholders": {
+      "age": "age",
+      "hours": "h",
+      "minutes": "min",
+      "seconds": "sec"
+    },
+    "finishTimeLabel": "Time h:m:s:",
+    "buttons": {
+      "calculate": "Calculate WMA"
+    },
+    "errors": {
+      "invalidDistance": "Please enter a distance",
+      "invalidAge": "Age must be between 35 and 100",
+      "invalidTime": "Please enter a time",
+      "noData": "No data available"
+    },
+    "results": {
+      "labels": {
+        "factor": "WMA factor",
+        "ageGradedTime": "Age-graded time",
+        "openStandard": "Open standard",
+        "ageStandard": "Age standard",
+        "percent": "Percent"
+      },
+      "legends": {
+        "factor": "WMA factor – how much age affects performance (1 = no effect).",
+        "ageGradedTime": "Age-graded time – what your time would be at age 20–30.",
+        "openStandard": "Open standard – world record for distance and gender.",
+        "ageStandard": "Age standard – open standard scaled for your age.",
+        "percent": "Percent – ratio of age standard to your time."
+      }
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "speedCalc": {
+    "mode": {
+      "pace": "Oblicz tempo",
+      "time": "Oblicz czas"
+    },
+    "distanceLabel": "Dystans (km):",
+    "presets": {
+      "5": "5 km",
+      "10": "10 km",
+      "halfMarathon": "21.0975 km",
+      "marathon": "42.195 km"
+    },
+    "customDistanceLabel": "Wpisz własny dystans",
+    "placeholders": {
+      "distance": "np. 5.0",
+      "hours": "g",
+      "minutes": "min",
+      "seconds": "sek"
+    },
+    "finishTimeLabel": "Czas ukończenia:",
+    "paceLabel": "Tempo (min/km):",
+    "buttons": {
+      "calculatePace": "Oblicz tempo",
+      "calculateTime": "Oblicz czas"
+    },
+    "errors": {
+      "invalidDistance": "Podaj prawidłowy dystans",
+      "invalidMinSec": "Minuty i sekundy muszą być od 0 do 59",
+      "nonZeroTime": "Podaj czas większy niż 0",
+      "paceFormat": "Tempo: minuty ≥ 0, sekundy 0–59",
+      "nonZeroPace": "Podaj tempo większe niż 0"
+    },
+    "results": {
+      "pace": "Tempo: {{paceMin}}:{{paceSec}} min/km",
+      "time": "Czas: {{hours}}:{{minutes}}:{{seconds}}"
+    }
+  },
+  "trainingCalc": {
+    "title": "Kalkulator treningów",
+    "description": "Ten kalkulator wylicza strefy tempowe (Easy, Marathon, Threshold, Interval, Repetition, Fast Reps) jako procenty VO₂max (np. Easy ≈ 59–74% VO₂max) i tętna (65–79% HRmax) – dokładnie według tabel i wytycznych zawartych w książce Daniels’ Running Formula.",
+    "distanceLabel": "Dystans (km):",
+    "presets": {
+      "5": "5 km",
+      "10": "10 km",
+      "halfMarathon": "21.0975 km",
+      "marathon": "42.195 km"
+    },
+    "placeholders": {
+      "hours": "g",
+      "minutes": "min",
+      "seconds": "sek"
+    },
+    "finishTimeLabel": "Czas ukończenia:",
+    "buttons": {
+      "calculateTraining": "Oblicz strefy treningowe"
+    },
+    "errors": {
+      "invalidInput": "Podaj prawidłowy dystans i czas większy niż 0"
+    },
+    "factors": {
+      "Easy": {
+        "title": "Tempo easy",
+        "description": "Easy: spokojne, regeneracyjne biegi – pomagają odbudować siłę."
+      },
+      "Marathon": {
+        "title": "Tempo maratońskie",
+        "description": "Marathon: tempo zbliżone do docelowego tempa na maraton."
+      },
+      "Threshold": {
+        "title": "Tempo progowe",
+        "description": "Threshold: mocny, ale jeszcze do utrzymania wysiłek (próg mleczanowy)."
+      },
+      "Interval": {
+        "title": "Tempo interwałowe",
+        "description": "Interval: interwały VO₂max – krótkie, mocne powtórzenia."
+      },
+      "Repetition": {
+        "title": "Tempo powtórzeniowe",
+        "description": "Repetition: bardzo szybkie, krótkie odcinki (prędkościowe)."
+      }
+    }
+  },
+  "home": {
+    "selectCalculator": "Wybierz kalkulator",
+    "paceCalculator": "Kalkulator tempa",
+    "trainingCalculator": "Kalkulator treningów",
+    "equivalentCalculator": "Kalkulator ekwiwalentów",
+    "wmaAgeGrading": "Kalkulator WMA",
+    "darkMode": "Tryb ciemny"
+  },
+  "equivalentCalc": {
+    "title": "Kalkulator ekwiwalentów",
+    "description": "Kalkulator najpierw przelicza Twój czas na wartość VDOT wg wzorów dr Danielsa, następnie na tej podstawie przewiduje czasy na inne dystanse zgodnie z tabelami i wzorami z książki Daniels’ Running Formula.",
+    "selectRaceLabel": "Wybierz dystans:",
+    "presets": {
+      "5": "5 km",
+      "10": "10 km",
+      "halfMarathon": "Półmaraton",
+      "marathon": "Maraton"
+    },
+    "finishTimeLabel": "Czas ukończenia:",
+    "placeholders": {
+      "hours": "g",
+      "minutes": "min",
+      "seconds": "sek"
+    },
+    "buttons": {
+      "calculate": "Oblicz ekwiwalenty"
+    },
+    "errors": {
+      "invalidInput": "Podaj poprawne dane"
+    },
+    "table": {
+      "race": "Dystans",
+      "time": "Czas",
+      "pace": "Tempo"
+    },
+    "targets": {
+      "5": "5 km",
+      "10": "10 km",
+      "halfMarathon": "Półmaraton",
+      "marathon": "Maraton",
+      "3": "3 km",
+      "1_5": "1.5 km"
+    }
+  },
+  "wmaFactor": {
+    "title": "Kalkulator współczynnika WMA",
+    "description": "Współczynnik WMA (age-grading) liczony jest wg tabel World Masters Athletics i porównuje Twój czas z rekordami świata w Twojej grupie wiekowej i płci.",
+    "selectDistance": "Wybierz dystans:",
+    "presets": {
+      "5": "5 km",
+      "10": "10 km",
+      "halfMarathon": "Półmaraton",
+      "marathon": "Maraton"
+    },
+    "ageLabel": "Wiek:",
+    "genderLabel": "Płeć:",
+    "genderOptions": {
+      "female": "Kobieta",
+      "male": "Mężczyzna"
+    },
+    "placeholders": {
+      "age": "wiek",
+      "hours": "g",
+      "minutes": "min",
+      "seconds": "sek"
+    },
+    "finishTimeLabel": "Czas (g:m:s):",
+    "buttons": {
+      "calculate": "Oblicz WMA"
+    },
+    "errors": {
+      "invalidDistance": "Podaj dystans",
+      "invalidAge": "Wiek musi być z przedziału 35–100",
+      "invalidTime": "Podaj czas",
+      "noData": "Brak danych"
+    },
+    "results": {
+      "labels": {
+        "factor": "Współczynnik WMA",
+        "ageGradedTime": "Czas przeliczony na wiek",
+        "openStandard": "Rekord świata",
+        "ageStandard": "Rekord przeliczony na wiek",
+        "percent": "Procent"
+      },
+      "legends": {
+        "factor": "Współczynnik WMA – jak bardzo wiek wpływa na wynik (1 = brak wpływu).",
+        "ageGradedTime": "Czas przeliczony – Twój czas na poziomie 20–30 lat.",
+        "openStandard": "Rekord świata – dla dystansu i płci.",
+        "ageStandard": "Rekord na wiek – przeliczony na Twój wiek.",
+        "percent": "Procent – stosunek rekordu na wiek do Twojego czasu."
+      }
+    }
+  }
+}
